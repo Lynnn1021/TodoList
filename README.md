@@ -93,13 +93,21 @@ The Strategy Pattern is a behavioral design pattern that defines a family of alg
 **代码示例**:
 ```python
 # models/user_manager.py
-def register_user(self, username, password):
-    if not username or not password:
-        return False, "Username and password cannot be empty"
-    if self.db.get_user_by_username(username):
-        return False, "Username already exists"
-    self.db.add_user(username, password)
-    return True, "User registered successfully"
+class RegistrationStrategy:
+    def validate(self, db, username, password):
+        raise NotImplementedError("You should implement this method.")
+
+class EmptyFieldStrategy(RegistrationStrategy):
+    def validate(self, db, username, password):
+        if not username or not password:
+            return False, "Username and password cannot be empty"
+        return True, None
+
+class UsernameExistsStrategy(RegistrationStrategy):
+    def validate(self, db, username, password):
+        if db.get_user_by_username(username):
+            return False, "Username already exists"
+        return True, None
 ```
 ### 模板方法模式 (Template Method Pattern)
 1.	Abstract Class:
