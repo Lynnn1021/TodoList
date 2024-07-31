@@ -87,6 +87,7 @@ class Observer(ABC):
 self.calendar.bind("<<CalendarSelected>>", self.show_tasks)
 ```
 ### 策略模式 (Strategy Pattern)
+The Strategy Pattern is a behavioral design pattern that defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the algorithm to vary independently from its clients.
 定义一系列算法，将每个算法封装起来，使它们可以相互替换。
 
 **代码示例**:
@@ -101,6 +102,12 @@ def register_user(self, username, password):
     return True, "User registered successfully"
 ```
 ### 模板方法模式 (Template Method Pattern)
+1.	Abstract Class:
+    •	Contains the template method which defines the algorithm’s structure.
+	•	The template method consists of a series of method calls, some of which are implemented in the abstract class, and some are abstract (or hooks) meant to be implemented by subclasses.
+2.	Concrete Classes:
+	•	Implement the abstract methods (or hooks) defined in the abstract class.
+	•	These implementations provide the specific behavior for the steps defined as abstract in the template method.
 定义一个操作中的算法骨架，将一些步骤延迟到子类中。
 
 **代码示例**:
