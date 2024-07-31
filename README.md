@@ -2,6 +2,11 @@
 
 Course Project
 
+## Simplified Implementation
+In Python, you can directly define a base class that includes the necessary methods, and the concrete strategy classes only need to implement these methods. This implementation is more concise and can fully meet the requirements in many cases.
+## Dynamic Language Characteristics
+Python is a dynamic language and does not enforce the use of abstract base classes to define interfaces. You can use duck typing to implement interfaces, meaning that as long as a class implements the required methods, it can be considered as implementing the interface.
+
 ## 设计模式
 
 ### 单例模式 (Singleton Pattern)
@@ -88,6 +93,7 @@ self.calendar.bind("<<CalendarSelected>>", self.show_tasks)
 ```
 ### 策略模式 (Strategy Pattern)
 The Strategy Pattern is a behavioral design pattern that defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the algorithm to vary independently from its clients.
+
 定义一系列算法，将每个算法封装起来，使它们可以相互替换。
 
 **代码示例**:
@@ -116,6 +122,7 @@ class UsernameExistsStrategy(RegistrationStrategy):
 2.	Concrete Classes:
 	•	Implement the abstract methods (or hooks) defined in the abstract class.
 	•	These implementations provide the specific behavior for the steps defined as abstract in the template method.
+
 定义一个操作中的算法骨架，将一些步骤延迟到子类中。
 
 **代码示例**:
@@ -175,6 +182,21 @@ def auth_required(func):
     return wrapper
 ```
 ### MVC 模式 (Model-View-Controller Pattern)
+1.	Model:
+•	Represents the application’s data and business logic.
+•	Notifies observers (typically the controller or view) of changes.
+•	Directly manages the data, logic, and rules of the application.
+2.	View:
+•	Represents the UI (user interface) of the application.
+•	Displays the data from the model to the user.
+•	Sends user commands to the controller.
+•	Observes the model and updates the display when the model changes.
+3.	Controller:
+•	Acts as an intermediary between Model and View.
+•	Responds to user input from the View.
+•	Updates the Model based on user actions.
+•	May also update the View in response to model changes.
+
 模型-视图-控制器模式将应用程序分为三个主要部分：模型、视图和控制器。
 
 **代码示例**:
